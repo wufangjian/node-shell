@@ -1,0 +1,48 @@
+#! /usr/bin/env node
+
+/*
+ * @des node 小工具
+ * @param 
+ */
+
+const CMD = require('commander')
+const API = require('../src/api.js')
+
+
+// 初始化 commander
+CMD
+    .allowUnknownOption()
+    .option('-p, --peppers', 'Add peppers')
+    .version('0.0.1')
+    .usage('translator <cmd> [input]')
+    .parse(process.argv)
+
+if (CMD.peppers) {
+    console.log('  - peppers')
+}
+
+
+CMD
+    .command('word')
+    .description('输入需要翻译的词语')
+    .action(function(word) {
+        API.baidu(word)
+        API.youdao(word)
+    })
+
+
+
+CMD
+    .command('test')
+    .description('测试')
+    .action(function(input) {
+        console.log('测试输入--> ', input) 
+    })
+
+// 没有参数时显示帮助信息
+if (!process.argv[2]) {
+    CMD.help()
+    console.log('未输入参数')
+}
+
+CMD.parse(process.argv)
