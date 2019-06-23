@@ -6,7 +6,7 @@
   },
   "dependencies": {
     "cli-table2": "^0.2.0",
-    "commander": "^2.16.0",
+    "commander": "^2.20.0",
     "crypto": "^1.0.1",
     "superagent": "^3.8.3"
   }
